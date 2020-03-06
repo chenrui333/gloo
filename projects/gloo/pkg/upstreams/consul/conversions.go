@@ -47,6 +47,7 @@ func ToUpstream(service *ServiceMeta) *v1.Upstream {
 		Metadata: core.Metadata{
 			Name:      fakeUpstreamName(service.Name),
 			Namespace: defaults.GlooSystem,
+			Annotations: map[string]string{"k2":"v2"},
 		},
 		UpstreamType: &v1.Upstream_Consul{
 			Consul: &consulplugin.UpstreamSpec{

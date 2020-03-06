@@ -50,6 +50,7 @@ func (t *translatorInstance) computeCluster(params plugins.Params, upstream *v1.
 		if err := upstreamPlugin.ProcessUpstream(params, upstream, out); err != nil {
 			reports.AddError(upstream, err)
 		}
+		addAnnotations(out.Metadata, upstream.Metadata.GetAnnotations())
 	}
 	if err := validateCluster(out); err != nil {
 		reports.AddError(upstream, eris.Wrapf(err, "cluster was configured improperly "+
